@@ -1,6 +1,6 @@
-# WCAG as JSON
+# WCAG as JSON (and TSV)
 
-This is a JSON formatted version of WCAG 2.1
+This is a JSON formatted version of WCAG 2.1, as well as a TSV one.
 
 We created this as a way to be able to quickly insert references to WCAG-related information into other documents.
 

@@ -10,7 +10,7 @@ async function main() {
     const contents = await fs.readFile(inputPath, "utf8");
     const asJson = JSON.parse(contents);
 
-    const output = wcagToCsv(asJson);
+    const output = wcagToTsv(asJson);
 
     console.log(`Writing TSV file at ${outputPath}`);
     await fs.writeFile(outputPath, output);
@@ -18,11 +18,11 @@ async function main() {
     console.log(`Success!`);
 }
 
-function wcagToCsv(wcag) {
+function wcagToTsv(wcag) {
     return [`SC Title\tURL\tDescription`]
         .concat(
-            _.flatMap(wcag, (principle) =>
-                _.flatMap(principle.guidelines, (guideline) =>
+            _.flatMap(wcag, principle =>
+                _.flatMap(principle.guidelines, guideline =>
                     _.flatMap(
                         guideline.success_criteria,
                         ({ ref_id, title, url, description }) =>
