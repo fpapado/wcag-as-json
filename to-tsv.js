@@ -19,14 +19,14 @@ async function main() {
 }
 
 function wcagToTsv(wcag) {
-    return [`SC Title\tURL\tDescription`]
+    return [`SC Title\tLevel\tURL\tDescription`]
         .concat(
             _.flatMap(wcag, principle =>
                 _.flatMap(principle.guidelines, guideline =>
                     _.flatMap(
                         guideline.success_criteria,
-                        ({ ref_id, title, url, description }) =>
-                            `${ref_id}: ${title}\t${url}\t${description}`
+                        ({ ref_id, title, url, description, level }) =>
+                            `${ref_id}: ${title}\t${level}\t${url}\t${description}`
                     )
                 )
             )
